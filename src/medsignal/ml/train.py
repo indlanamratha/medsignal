@@ -6,6 +6,7 @@ reports lets them review the most urgent ones first, so recall matters most.
 Split by time, not randomly: train on 2020-2023, validate on 2024, test on 2025.
 This mimics real use, where a model trained on past reports scores future ones.
 """
+import duckdb
 import joblib
 import lightgbm as lgb
 import matplotlib
@@ -15,12 +16,10 @@ import pandas as pd
 import xgboost as xgb
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (average_precision_score, f1_score, precision_score,
-                             recall_score, roc_auc_score)
+from sklearn.metrics import average_precision_score, f1_score, precision_score, recall_score, roc_auc_score
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-import duckdb
 from medsignal.config import DATA_DIR, PROJECT_ROOT
 from medsignal.ml.features import build_features, feature_columns
 

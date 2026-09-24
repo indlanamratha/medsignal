@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: Lint and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install dependencies
+        run: uv sync --frozen
+      - name: Lint
+        run: uv run ruff check src tests
+      - name: Unit tests
+        run: uv run pytest -q
+
+  docker:
+    name: Build and smoke-test the API container
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Create a stand-in model (real data is not stored in GitHub)
+        run: uv run --no-project --with scikit-learn --with pandas --with joblib python scripts/make_dummy_model.py
+      - name: Build image
+        run: docker build -t medsignal-api .
+      - name: Start container and check the API
+        run: |
+          docker run -d -p 8000:8000 --name api medsignal-api
+          for i in $(seq 1 20); do curl -sf http://localhost:8000/health && break; sleep 2; done
+          curl -sf -X POST http://localhost:8000/predict \
+            -H "Content-Type: application/json" \
+            -d '{"age_years": 58, "sex": "F", "reporter_type": "Physician", "country": "US",
+                 "suspect_drugs": ["semaglutide"], "reactions": ["PANCREATITIS", "VOMITING"]}'
+          echo
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://localhost:8000/predict \
+            -H 'Content-Type: application/json' \
+            -d '{"age_years": 500, "suspect_drugs": ["semaglutide"], "reactions": ["NAUSEA"]}')" = "422"
+      - name: Show container logs
+        if: always()
+        run: docker logs api || true

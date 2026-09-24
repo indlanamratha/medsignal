@@ -122,7 +122,11 @@ def run() -> None:
     print(f"Tested {len(signals):,} drug-reaction pairs (at least {MIN_REPORTS} reports each).")
     print(f"Signals found: {len(flagged):,}\n")
 
-    summary = signals.groupby("drug_group").agg(pairs_tested=("a", "size"), signals=("is_signal", "sum"), high_confidence=("high_confidence", "sum"))
+    summary = signals.groupby("drug_group").agg(
+           pairs_tested=("a", "size"),
+           signals=("is_signal", "sum"),
+           high_confidence=("high_confidence", "sum"),
+       )
     print("===== Signals per drug =====")
     print(summary.sort_values("signals", ascending=False).to_string())
 

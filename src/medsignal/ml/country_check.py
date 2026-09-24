@@ -5,11 +5,11 @@ serious. So "is the report from the US?" is partly a reporting rule, not medicin
 This script measures performance with and without the country features, and on
 US-only reports, where that shortcut is not available.
 """
+import duckdb
 import lightgbm as lgb
 import pandas as pd
 from sklearn.metrics import average_precision_score, roc_auc_score
 
-import duckdb
 from medsignal.ml.features import build_features, feature_columns
 from medsignal.ml.train import DATABASE, TEST_YEAR, TRAIN_END
 
