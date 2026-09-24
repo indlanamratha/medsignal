@@ -1,0 +1,16 @@
+drug_a,drug_b,shared_reports
+metformin,sitagliptin,4359
+empagliflozin,metformin,3309
+dapagliflozin,metformin,2705
+insulin glargine,metformin,1825
+dulaglutide,semaglutide,1121
+dulaglutide,insulin glargine,942
+metformin,semaglutide,838
+dulaglutide,metformin,802
+semaglutide,tirzepatide,794
+dulaglutide,tirzepatide,569
+liraglutide,metformin,524
+dulaglutide,empagliflozin,494
+empagliflozin,insulin glargine,402
+liraglutide,semaglutide,381
+empagliflozin,sitagliptin,369

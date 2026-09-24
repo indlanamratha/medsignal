@@ -1,0 +1,25 @@
+drug_group,month,reporter_type_label,reports,pct_serious
+naltrexone/bupropion,2025-10,Consumer,10,100.0
+naltrexone/bupropion,2025-10,Physician,4,100.0
+naltrexone/bupropion,2025-10,Other health professional,4,100.0
+naltrexone/bupropion,2025-11,Consumer,494,3.6
+naltrexone/bupropion,2025-11,Physician,79,2.5
+naltrexone/bupropion,2025-11,Other health professional,61,13.1
+naltrexone/bupropion,2025-12,Consumer,14,64.3
+semaglutide,2025-06,Consumer,375,95.5
+semaglutide,2025-06,Physician,110,99.1
+semaglutide,2025-06,Other health professional,54,92.6
+semaglutide,2025-06,Pharmacist,45,97.8
+semaglutide,2025-06,Lawyer,19,100.0
+semaglutide,2025-07,Consumer,7916,19.6
+semaglutide,2025-07,Physician,519,41.8
+semaglutide,2025-07,Other health professional,362,43.6
+semaglutide,2025-07,Pharmacist,117,47.9
+semaglutide,2025-07,Lawyer,55,96.4
+semaglutide,2025-07,Unknown,2,100.0
+semaglutide,2025-08,Consumer,851,96.7
+semaglutide,2025-08,Lawyer,181,100.0
+semaglutide,2025-08,Physician,107,99.1
+semaglutide,2025-08,Other health professional,54,92.6
+semaglutide,2025-08,Pharmacist,30,100.0
+semaglutide,2025-08,Unknown,2,100.0
