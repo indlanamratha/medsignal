@@ -9,6 +9,7 @@ This mimics real use, where a model trained on past reports scores future ones.
 import joblib
 import lightgbm as lgb
 import matplotlib
+import mlflow
 import numpy as np
 import pandas as pd
 import xgboost as xgb
@@ -32,6 +33,29 @@ REPORTS_DIR = PROJECT_ROOT / "reports"
 RESULTS_DIR = PROJECT_ROOT / "analytics" / "results"
 TRAIN_END, VALID_YEAR, TEST_YEAR = 2023, 2024, 2025
 TARGET_RECALL = 0.80
+TRACKING_URI = f"sqlite:///{PROJECT_ROOT / 'mlflow.db'}"
+EXPERIMENT = "serious-report-triage"
+REGISTERED_MODEL = "serious-report-triage"
+
+MODEL_PARAMS = {
+    "logistic_regression": {"max_iter": 2000, "class_weight": "balanced"},
+    "xgboost": {"n_estimators": 400, "max_depth": 6, "learning_rate": 0.1, "subsample": 0.8,
+                "colsample_bytree": 0.8, "tree_method": "hist", "eval_metric": "aucpr",
+                "random_state": 42},
+    "lightgbm": {"n_estimators": 400, "learning_rate": 0.05, "num_leaves": 63, "subsample": 0.8,
+                 "subsample_freq": 1, "colsample_bytree": 0.8, "class_weight": "balanced",
+                 "random_state": 42},
+}
+
+
+def make_model(name: str, pos_weight: float):
+    params = MODEL_PARAMS[name]
+    if name == "logistic_regression":
+        return make_pipeline(SimpleImputer(strategy="median"), StandardScaler(),
+                             LogisticRegression(**params))
+    if name == "xgboost":
+        return xgb.XGBClassifier(**params, scale_pos_weight=pos_weight, n_jobs=-1)
+    return lgb.LGBMClassifier(**params, verbose=-1)
 
 
 def threshold_for_recall(y_true, scores, target=TARGET_RECALL) -> float:
@@ -97,28 +121,25 @@ def main() -> None:
         print(f"  {name:<16} {len(part):>8,} reports, {100 * part['is_serious'].mean():.1f}% serious")
 
     pos_weight = (y_tr == 0).sum() / (y_tr == 1).sum()
-    models = {
-        "logistic_regression": make_pipeline(
-            SimpleImputer(strategy="median"), StandardScaler(),
-            LogisticRegression(max_iter=2000, class_weight="balanced")),
-        "xgboost": xgb.XGBClassifier(
-            n_estimators=400, max_depth=6, learning_rate=0.1, subsample=0.8,
-            colsample_bytree=0.8, scale_pos_weight=pos_weight, tree_method="hist",
-            eval_metric="aucpr", n_jobs=-1, random_state=42),
-        "lightgbm": lgb.LGBMClassifier(
-            n_estimators=400, learning_rate=0.05, num_leaves=63, subsample=0.8,
-            subsample_freq=1, colsample_bytree=0.8, class_weight="balanced",
-            random_state=42, verbose=-1),
-    }
+    mlflow.set_tracking_uri(TRACKING_URI)
+    mlflow.set_experiment(EXPERIMENT)
+    split_info = {"train_years": f"2020-{TRAIN_END}", "valid_year": VALID_YEAR, "test_year": TEST_YEAR,
+                  "n_features": len(features), "n_train": len(train), "target_recall": TARGET_RECALL}
 
     base_rate = y_tr.mean()
     rows = [evaluate("baseline (always predicts training rate)",
                      y_va, np.full(len(y_va), base_rate), y_te, np.full(len(y_te), base_rate))]
-    for name, model in models.items():
+    models, run_ids = {}, {}
+    for name in MODEL_PARAMS:
         print(f"Training {name}...")
-        model.fit(X_tr, y_tr)
-        rows.append(evaluate(name, y_va, model.predict_proba(X_va)[:, 1],
-                             y_te, model.predict_proba(X_te)[:, 1]))
+        with mlflow.start_run(run_name=name) as run:
+            model = make_model(name, pos_weight).fit(X_tr, y_tr)
+            row = evaluate(name, y_va, model.predict_proba(X_va)[:, 1],
+                           y_te, model.predict_proba(X_te)[:, 1])
+            mlflow.log_params({**MODEL_PARAMS[name], **split_info, "model_type": name})
+            mlflow.log_metrics({k: float(v) for k, v in row.items() if k != "model"})
+        models[name], run_ids[name] = model, run.info.run_id
+        rows.append(row)
 
     results = pd.DataFrame(rows)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -134,12 +155,21 @@ def main() -> None:
                  "model_name": best_name}, MODELS_DIR / "serious_model.joblib")
     print(f"\nBest model on validation PR-AUC: {best_name} (saved to models/serious_model.joblib)")
 
+    with mlflow.start_run(run_id=run_ids[best_name]):
+        info = mlflow.sklearn.log_model(best, name="model", input_example=X_te.head(5),
+                                        serialization_format="cloudpickle",
+                                        registered_model_name=REGISTERED_MODEL)
+    mlflow.MlflowClient().set_registered_model_alias(
+        REGISTERED_MODEL, "champion", info.registered_model_version)
+    print(f"Registered {REGISTERED_MODEL} version {info.registered_model_version} as 'champion' in MLflow")
+
     if best_name in ("xgboost", "lightgbm"):
         sample = X_te.sample(min(5000, len(X_te)), random_state=42)
         REPORTS_DIR.mkdir(exist_ok=True)
         importance = plot_importance(tree_shap(best, sample), features, REPORTS_DIR / "shap_importance.png")
         print("\n===== Top 15 features by mean |SHAP| (saved chart to reports/shap_importance.png) =====")
         print(importance.head(15).round(3).to_string())
+        mlflow.log_artifact(str(REPORTS_DIR / "shap_importance.png"), run_id=run_ids[best_name])
 
 
 if __name__ == "__main__":

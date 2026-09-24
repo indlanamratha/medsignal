@@ -223,3 +223,8 @@ dbt/target/
 dbt/logs/
 
 models/
+
+mlflow.db
+mlruns/
+mlartifacts/
+logs/

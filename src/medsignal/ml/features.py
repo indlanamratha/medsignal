@@ -11,6 +11,7 @@ the reaction outcome field, or reaction terms that describe the outcome itself
 import re
 
 import duckdb
+import numpy as np
 import pandas as pd
 
 TOP_REACTIONS = 100
@@ -79,7 +80,8 @@ def build_features(con: duckdb.DuckDBPyConnection, train_end_year: int) -> pd.Da
           .join(drug_counts.set_index("report_id"))
           .join(n_reactions)
           .join(drug_flags)
-          .join(reaction_flags))
+          .join(reaction_flags)
+          .copy())
 
     df["age_missing"] = df["age_years"].isna().astype(int)
     df["weight_missing"] = df["weight_kg"].isna().astype(int)
@@ -94,3 +96,44 @@ def build_features(con: duckdb.DuckDBPyConnection, train_end_year: int) -> pd.Da
 
 def feature_columns(df: pd.DataFrame) -> list[str]:
     return [c for c in df.columns if c not in ("report_id", "received_date", "is_serious")]
+
+
+# ---------- Serving: build the same features for one incoming report ----------
+
+LEAKAGE_SUBSTRINGS = ("DEATH", "FATAL", "HOSPITAL", "DISABILITY")
+
+
+def is_allowed_reaction(term: str) -> bool:
+    """Python version of LEAKAGE_FREE_REACTIONS_SQL (a test keeps them in sync)."""
+    return not any(s in term for s in LEAKAGE_SUBSTRINGS) and term != "COMPLETED SUICIDE"
+
+
+def features_from_report(report: dict, feature_names: list[str]) -> pd.DataFrame:
+    """Turn one report (as sent to the API) into a one-row frame with the training columns.
+
+    Uses the same naming rules as build_features, so a model trained on
+    build_features output can score it without training-serving skew.
+    """
+    reactions = {r.strip().upper() for r in report.get("reactions", [])}
+    reactions = {r for r in reactions if is_allowed_reaction(r)}
+    suspect_drugs = set(report.get("suspect_drugs", []))
+    age, weight, country = report.get("age_years"), report.get("weight_kg"), report.get("country")
+
+    values = {
+        "age_years": np.nan if age is None else float(age),
+        "weight_kg": np.nan if weight is None else float(weight),
+        "is_us": int(country == "US"),
+        "country_missing": int(country is None),
+        "n_suspect_drugs": report.get("n_suspect_drugs", len(suspect_drugs)),
+        "n_concomitant_drugs": report.get("n_concomitant_drugs", 0),
+        "n_reactions": len(reactions),
+        "age_missing": int(age is None),
+        "weight_missing": int(weight is None),
+        _clean(f"sex_{report.get('sex', 'U')}"): 1,
+        _clean(f"reporter_{report.get('reporter_type', 'Unknown')}"): 1,
+    }
+    values.update({f"drug_{_clean(d)}": 1 for d in suspect_drugs})
+    values.update({f"rx_{_clean(r)}": 1 for r in reactions})
+
+    row = {name: values.get(name, 0) for name in feature_names}
+    return pd.DataFrame([row], columns=feature_names).astype(float)

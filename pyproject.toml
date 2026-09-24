@@ -10,9 +10,11 @@ requires-python = ">=3.11"
 dependencies = [
     "dbt-duckdb>=1.11.0",
     "duckdb>=1.5.5",
+    "fastapi>=0.141.1",
     "joblib>=1.6.0",
     "lightgbm>=4.7.0",
     "matplotlib>=3.11.2",
+    "mlflow>=3.16.1",
     "orjson>=3.12.0",
     "pandas>=3.0.6",
     "plotly>=7.1.0",
@@ -23,6 +25,7 @@ dependencies = [
     "scikit-learn>=1.9.1",
     "streamlit>=1.64.0",
     "tenacity>=9.1.4",
+    "uvicorn>=0.53.0",
     "xgboost>=3.2.0",
 ]
 
@@ -35,6 +38,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "httpx>=0.28.1",
     "jupyter>=1.1.1",
     "pytest>=9.1.1",
     "ruff>=0.16.8",
