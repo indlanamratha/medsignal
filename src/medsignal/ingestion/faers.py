@@ -90,6 +90,8 @@ def ingest_month(drug: str, search: str, year: int, month: int) -> int | None:
 
 
 def run(drugs: list[str] | None, start_year: int, end_year: int) -> None:
+    if not OPENFDA_KEY:
+        raise RuntimeError("OPENFDA_KEY is missing. Check your .env file.")
     drugs = drugs or list(DRUG_QUERIES)
     grand_total = 0
     for drug in drugs:

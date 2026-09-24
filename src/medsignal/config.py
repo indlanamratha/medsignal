@@ -10,9 +10,9 @@ DATA_DIR = PROJECT_ROOT / "data"
 BRONZE_DIR = DATA_DIR / "bronze"
 SILVER_DIR = DATA_DIR / "silver"
 
+   # Only needed for downloading data. It's checked when ingestion runs,
+   # so tests and the API work without it.
 OPENFDA_KEY = os.getenv("OPENFDA_KEY")
-if not OPENFDA_KEY:
-    raise RuntimeError("OPENFDA_KEY is missing. Check your .env file.")
 
 
     # ---- Ingestion scope ----
