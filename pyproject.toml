@@ -10,6 +10,7 @@ requires-python = ">=3.11"
 dependencies = [
     "dbt-duckdb>=1.11.0",
     "duckdb>=1.5.5",
+    "evidently==0.7.23",
     "fastapi>=0.141.1",
     "joblib>=1.6.0",
     "lightgbm>=4.7.0",
@@ -17,7 +18,7 @@ dependencies = [
     "mlflow>=3.16.1",
     "orjson>=3.12.0",
     "pandas>=3.0.6",
-    "plotly>=7.1.0",
+    "plotly>=5.10,<6",
     "prefect>=3.8.6",
     "pyarrow>=25.0.1",
     "python-dotenv>=1.2.3",

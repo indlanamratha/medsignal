@@ -1,0 +1,39 @@
+column,method,score,threshold,drifted
+age_years,Wasserstein distance (normed),0.1768151504935623,0.1,True
+drug_dulaglutide,Jensen-Shannon distance,0.18271846749528511,0.1,True
+drug_empagliflozin,Jensen-Shannon distance,0.10846198389197291,0.1,True
+drug_metformin,Jensen-Shannon distance,0.1279960288511851,0.1,True
+drug_tirzepatide,Jensen-Shannon distance,0.30384977593800516,0.1,True
+n_suspect_drugs,Wasserstein distance (normed),0.15886585722393348,0.1,True
+prediction,Wasserstein distance (normed),0.18376613474671097,0.1,True
+reporter_consumer,Jensen-Shannon distance,0.13429027076266228,0.1,True
+weight_kg,Wasserstein distance (normed),0.12651533279987218,0.1,True
+drug_dapagliflozin,Jensen-Shannon distance,0.0009602178424097101,0.1,False
+drug_exenatide,Jensen-Shannon distance,0.024331185078613236,0.1,False
+drug_insulin_glargine,Jensen-Shannon distance,0.08583467500863433,0.1,False
+drug_liraglutide,Jensen-Shannon distance,0.03612969777879067,0.1,False
+drug_naltrexone_bupropion,Jensen-Shannon distance,0.0435614405009811,0.1,False
+drug_orlistat,Jensen-Shannon distance,0.029125812490697796,0.1,False
+drug_phentermine,Jensen-Shannon distance,0.0024739797910479093,0.1,False
+drug_semaglutide,Jensen-Shannon distance,0.055282956928135805,0.1,False
+drug_sitagliptin,Jensen-Shannon distance,0.06639127900433696,0.1,False
+is_us,Jensen-Shannon distance,0.05045113991071638,0.1,False
+n_concomitant_drugs,Wasserstein distance (normed),0.09377314689782436,0.1,False
+n_reactions,Wasserstein distance (normed),0.08547346448333229,0.1,False
+reporter_lawyer,Jensen-Shannon distance,0.03775865827363378,0.1,False
+reporter_physician,Jensen-Shannon distance,0.087629479283948,0.1,False
+rx_blood_glucose_increased,Jensen-Shannon distance,0.09265248361128553,0.1,False
+rx_constipation,Jensen-Shannon distance,0.03763585520902428,0.1,False
+rx_decreased_appetite,Jensen-Shannon distance,0.007439478306694227,0.1,False
+rx_diarrhoea,Jensen-Shannon distance,0.00931738611995584,0.1,False
+rx_drug_ineffective,Jensen-Shannon distance,0.0005600888461977944,0.1,False
+rx_extra_dose_administered,Jensen-Shannon distance,0.04704961276574647,0.1,False
+rx_fatigue,Jensen-Shannon distance,0.003070829728177278,0.1,False
+rx_inappropriate_schedule_of_product_administration,Jensen-Shannon distance,0.07674760182734468,0.1,False
+rx_incorrect_dose_administered,Jensen-Shannon distance,0.059231546832698295,0.1,False
+rx_injection_site_pain,Jensen-Shannon distance,0.010984391745370723,0.1,False
+rx_nausea,Jensen-Shannon distance,0.01846382690511169,0.1,False
+rx_off_label_use,Jensen-Shannon distance,0.049043232175206286,0.1,False
+rx_product_dose_omission_issue,Jensen-Shannon distance,0.00991131282946697,0.1,False
+rx_vomiting,Jensen-Shannon distance,0.014456346076091468,0.1,False
+rx_weight_decreased,Jensen-Shannon distance,0.036591760130948225,0.1,False
