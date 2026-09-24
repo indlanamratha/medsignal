@@ -221,3 +221,5 @@ mlruns/
 *.duckdb
 dbt/target/
 dbt/logs/
+
+models/
