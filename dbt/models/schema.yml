@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_reports
+    columns:
+      - name: report_id
+        data_tests: [unique, not_null]
+      - name: received_date
+        data_tests: [not_null]
+      - name: sex
+        data_tests:
+          - accepted_values:
+              values: ['M', 'F', 'U']
+
+  - name: dim_drug
+    columns:
+      - name: drug_group
+        data_tests: [unique, not_null]
+
+  - name: fct_report_drug
+    columns:
+      - name: report_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_reports')
+              field: report_id
+      - name: drug_group
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_drug')
+              field: drug_group
+
+  - name: fct_drug_reaction
+    columns:
+      - name: reaction_pt
+        data_tests: [not_null]

@@ -1,0 +1,14 @@
+name: medsignal
+version: "1.0.0"
+profile: medsignal
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+vars:
+  silver_path: ../data/silver
+
+models:
+  medsignal:
+    +materialized: table

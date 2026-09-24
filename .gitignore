@@ -219,3 +219,5 @@ __marimo__/
 data/
 mlruns/
 *.duckdb
+dbt/target/
+dbt/logs/

@@ -1,0 +1,14 @@
+drug_group,drug_class,match_pattern
+semaglutide,GLP-1,%SEMAGLUTIDE%
+tirzepatide,GLP-1/GIP,%TIRZEPATIDE%
+liraglutide,GLP-1,%LIRAGLUTIDE%
+dulaglutide,GLP-1,%DULAGLUTIDE%
+exenatide,GLP-1,%EXENATIDE%
+metformin,Biguanide,%METFORMIN%
+empagliflozin,SGLT2,%EMPAGLIFLOZIN%
+dapagliflozin,SGLT2,%DAPAGLIFLOZIN%
+sitagliptin,DPP-4,%SITAGLIPTIN%
+insulin glargine,Insulin,%INSULIN GLARGINE%
+phentermine,Weight loss,%PHENTERMINE%
+orlistat,Weight loss,%ORLISTAT%
+naltrexone/bupropion,Weight loss,%NALTREXONE%BUPROPION%

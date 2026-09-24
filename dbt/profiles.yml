@@ -1,0 +1,7 @@
+medsignal:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/medsignal.duckdb
+      threads: 4
