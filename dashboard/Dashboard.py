@@ -1,6 +1,6 @@
 """MedSignal dashboard: FDA adverse event reports for obesity and diabetes drugs.
 
-Run from the project folder:  uv run streamlit run dashboard/app.py
+Run from the project folder:  uv run streamlit run dashboard/Dashboard.py
 """
 from pathlib import Path
 

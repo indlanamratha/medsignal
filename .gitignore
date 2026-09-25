@@ -228,3 +228,4 @@ mlflow.db
 mlruns/
 mlartifacts/
 logs/
+deploy/

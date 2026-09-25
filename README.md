@@ -3,6 +3,8 @@
 [![CI](https://github.com/indlanamratha/medsignal/actions/workflows/ci.yml/badge.svg)](https://github.com/indlanamratha/medsignal/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 
+**🔗 Live demo: [medsignal.streamlit.app](https://medsignal.streamlit.app)**: explore the dashboard and ask the AI agent a question. *(The free demo uses keyword search for labels; the full hybrid + rerank pipeline runs locally.)*
+
 An end-to-end data and AI platform built on **FDA adverse event reports (FAERS)** for 13 obesity and diabetes drug groups (Ozempic/Wegovy, Mounjaro/Zepbound, metformin, and others), 2020–2025.
 
 It covers the full lifecycle: **data pipeline → warehouse → analytics dashboard → statistical signal detection → ML model with MLOps → RAG over FDA drug labels → a tool-using AI agent → evaluation.**
@@ -155,7 +157,7 @@ uv run python -m medsignal.signals.disproportionality    # signal detection
 uv run python -m medsignal.ml.train                      # train models, log to MLflow
 uv run python -m medsignal.rag.labels                    # download FDA labels
 uv run python -m medsignal.rag.retrieve --build          # build the search index
-uv run streamlit run dashboard/app.py                    # dashboard + Ask MedSignal
+uv run streamlit run dashboard/Dashboard.py                    # dashboard + Ask MedSignal
 ```
 
 Other commands:
