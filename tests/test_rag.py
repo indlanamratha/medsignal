@@ -53,3 +53,10 @@ def test_detect_drug_by_brand_or_generic_name():
     assert detect_drug("What is the boxed warning for Wegovy?", aliases) == "semaglutide"
     assert detect_drug("Does tirzepatide cause nausea?", aliases) == "tirzepatide"
     assert detect_drug("What is aspirin?", aliases) is None
+
+
+def test_select_labels_detects_combinations_by_substance_count():
+    labels = [{"effective_time": "20250101",
+               "openfda": {"brand_name": ["SYNJARDY XR"], "generic_name": ["EMPAGLIFLOZIN"],
+                           "substance_name": ["EMPAGLIFLOZIN", "METFORMIN HYDROCHLORIDE"]}}]
+    assert select_labels(labels, allow_combinations=False) == []

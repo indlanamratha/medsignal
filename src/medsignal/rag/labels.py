@@ -56,7 +56,8 @@ def select_labels(labels: list[dict], allow_combinations: bool) -> list[dict]:
         openfda = label.get("openfda") or {}
         generic = (openfda.get("generic_name") or [""])[0].upper()
         brand = (openfda.get("brand_name") or [generic])[0].upper()
-        if not brand or (" AND " in generic and not allow_combinations):
+        is_combination = " AND " in generic or len(openfda.get("substance_name") or []) > 1
+        if not brand or (is_combination and not allow_combinations):
             continue
         newest_by_brand.setdefault(brand, label)
     return list(newest_by_brand.values())[:MAX_LABELS_PER_DRUG]

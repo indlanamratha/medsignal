@@ -97,6 +97,9 @@ class LabelRetriever:
         self.aliases = drug_aliases(self.chunks)
         self._embedder, self._reranker, self._collection = embedder, reranker, collection
 
+    def detect(self, question: str) -> str | None:
+        return detect_drug(question, self.aliases)
+
     @property
     def embedder(self):
         if self._embedder is None:
