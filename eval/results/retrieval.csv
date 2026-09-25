@@ -1,0 +1,257 @@
+id,mode,rank
+L01,bm25,1.0
+L01,dense,
+L01,hybrid,3.0
+L01,hybrid_rerank,1.0
+L01,bm25 + expansion + dedupe,1.0
+L01,dense + expansion + dedupe,
+L01,hybrid + expansion + dedupe,3.0
+L01,hybrid_rerank + expansion + dedupe,1.0
+L02,bm25,1.0
+L02,dense,1.0
+L02,hybrid,1.0
+L02,hybrid_rerank,1.0
+L02,bm25 + expansion + dedupe,1.0
+L02,dense + expansion + dedupe,1.0
+L02,hybrid + expansion + dedupe,1.0
+L02,hybrid_rerank + expansion + dedupe,1.0
+L03,bm25,1.0
+L03,dense,1.0
+L03,hybrid,1.0
+L03,hybrid_rerank,1.0
+L03,bm25 + expansion + dedupe,1.0
+L03,dense + expansion + dedupe,1.0
+L03,hybrid + expansion + dedupe,1.0
+L03,hybrid_rerank + expansion + dedupe,1.0
+L04,bm25,1.0
+L04,dense,1.0
+L04,hybrid,1.0
+L04,hybrid_rerank,1.0
+L04,bm25 + expansion + dedupe,1.0
+L04,dense + expansion + dedupe,1.0
+L04,hybrid + expansion + dedupe,1.0
+L04,hybrid_rerank + expansion + dedupe,1.0
+L05,bm25,1.0
+L05,dense,1.0
+L05,hybrid,1.0
+L05,hybrid_rerank,1.0
+L05,bm25 + expansion + dedupe,1.0
+L05,dense + expansion + dedupe,1.0
+L05,hybrid + expansion + dedupe,1.0
+L05,hybrid_rerank + expansion + dedupe,1.0
+L06,bm25,1.0
+L06,dense,1.0
+L06,hybrid,1.0
+L06,hybrid_rerank,1.0
+L06,bm25 + expansion + dedupe,1.0
+L06,dense + expansion + dedupe,1.0
+L06,hybrid + expansion + dedupe,1.0
+L06,hybrid_rerank + expansion + dedupe,1.0
+L07,bm25,1.0
+L07,dense,1.0
+L07,hybrid,1.0
+L07,hybrid_rerank,1.0
+L07,bm25 + expansion + dedupe,1.0
+L07,dense + expansion + dedupe,1.0
+L07,hybrid + expansion + dedupe,1.0
+L07,hybrid_rerank + expansion + dedupe,1.0
+L08,bm25,1.0
+L08,dense,2.0
+L08,hybrid,2.0
+L08,hybrid_rerank,1.0
+L08,bm25 + expansion + dedupe,1.0
+L08,dense + expansion + dedupe,2.0
+L08,hybrid + expansion + dedupe,2.0
+L08,hybrid_rerank + expansion + dedupe,1.0
+L09,bm25,1.0
+L09,dense,1.0
+L09,hybrid,1.0
+L09,hybrid_rerank,1.0
+L09,bm25 + expansion + dedupe,1.0
+L09,dense + expansion + dedupe,1.0
+L09,hybrid + expansion + dedupe,1.0
+L09,hybrid_rerank + expansion + dedupe,1.0
+L10,bm25,1.0
+L10,dense,2.0
+L10,hybrid,2.0
+L10,hybrid_rerank,1.0
+L10,bm25 + expansion + dedupe,1.0
+L10,dense + expansion + dedupe,2.0
+L10,hybrid + expansion + dedupe,2.0
+L10,hybrid_rerank + expansion + dedupe,1.0
+L11,bm25,1.0
+L11,dense,1.0
+L11,hybrid,1.0
+L11,hybrid_rerank,1.0
+L11,bm25 + expansion + dedupe,1.0
+L11,dense + expansion + dedupe,1.0
+L11,hybrid + expansion + dedupe,1.0
+L11,hybrid_rerank + expansion + dedupe,1.0
+L12,bm25,1.0
+L12,dense,1.0
+L12,hybrid,1.0
+L12,hybrid_rerank,1.0
+L12,bm25 + expansion + dedupe,1.0
+L12,dense + expansion + dedupe,1.0
+L12,hybrid + expansion + dedupe,1.0
+L12,hybrid_rerank + expansion + dedupe,1.0
+L13,bm25,
+L13,dense,
+L13,hybrid,
+L13,hybrid_rerank,
+L13,bm25 + expansion + dedupe,1.0
+L13,dense + expansion + dedupe,3.0
+L13,hybrid + expansion + dedupe,2.0
+L13,hybrid_rerank + expansion + dedupe,2.0
+L14,bm25,
+L14,dense,
+L14,hybrid,
+L14,hybrid_rerank,
+L14,bm25 + expansion + dedupe,
+L14,dense + expansion + dedupe,1.0
+L14,hybrid + expansion + dedupe,2.0
+L14,hybrid_rerank + expansion + dedupe,5.0
+L15,bm25,1.0
+L15,dense,
+L15,hybrid,2.0
+L15,hybrid_rerank,1.0
+L15,bm25 + expansion + dedupe,1.0
+L15,dense + expansion + dedupe,
+L15,hybrid + expansion + dedupe,2.0
+L15,hybrid_rerank + expansion + dedupe,1.0
+L16,bm25,2.0
+L16,dense,1.0
+L16,hybrid,1.0
+L16,hybrid_rerank,1.0
+L16,bm25 + expansion + dedupe,1.0
+L16,dense + expansion + dedupe,1.0
+L16,hybrid + expansion + dedupe,1.0
+L16,hybrid_rerank + expansion + dedupe,1.0
+L17,bm25,1.0
+L17,dense,1.0
+L17,hybrid,1.0
+L17,hybrid_rerank,1.0
+L17,bm25 + expansion + dedupe,1.0
+L17,dense + expansion + dedupe,1.0
+L17,hybrid + expansion + dedupe,1.0
+L17,hybrid_rerank + expansion + dedupe,1.0
+L18,bm25,1.0
+L18,dense,1.0
+L18,hybrid,1.0
+L18,hybrid_rerank,1.0
+L18,bm25 + expansion + dedupe,1.0
+L18,dense + expansion + dedupe,1.0
+L18,hybrid + expansion + dedupe,1.0
+L18,hybrid_rerank + expansion + dedupe,1.0
+L19,bm25,1.0
+L19,dense,1.0
+L19,hybrid,1.0
+L19,hybrid_rerank,1.0
+L19,bm25 + expansion + dedupe,1.0
+L19,dense + expansion + dedupe,1.0
+L19,hybrid + expansion + dedupe,1.0
+L19,hybrid_rerank + expansion + dedupe,1.0
+L20,bm25,1.0
+L20,dense,1.0
+L20,hybrid,1.0
+L20,hybrid_rerank,1.0
+L20,bm25 + expansion + dedupe,1.0
+L20,dense + expansion + dedupe,1.0
+L20,hybrid + expansion + dedupe,1.0
+L20,hybrid_rerank + expansion + dedupe,1.0
+L21,bm25,1.0
+L21,dense,1.0
+L21,hybrid,1.0
+L21,hybrid_rerank,1.0
+L21,bm25 + expansion + dedupe,1.0
+L21,dense + expansion + dedupe,1.0
+L21,hybrid + expansion + dedupe,1.0
+L21,hybrid_rerank + expansion + dedupe,1.0
+L22,bm25,3.0
+L22,dense,1.0
+L22,hybrid,1.0
+L22,hybrid_rerank,1.0
+L22,bm25 + expansion + dedupe,1.0
+L22,dense + expansion + dedupe,1.0
+L22,hybrid + expansion + dedupe,1.0
+L22,hybrid_rerank + expansion + dedupe,1.0
+L23,bm25,2.0
+L23,dense,1.0
+L23,hybrid,1.0
+L23,hybrid_rerank,1.0
+L23,bm25 + expansion + dedupe,1.0
+L23,dense + expansion + dedupe,1.0
+L23,hybrid + expansion + dedupe,1.0
+L23,hybrid_rerank + expansion + dedupe,1.0
+L24,bm25,
+L24,dense,1.0
+L24,hybrid,1.0
+L24,hybrid_rerank,1.0
+L24,bm25 + expansion + dedupe,
+L24,dense + expansion + dedupe,1.0
+L24,hybrid + expansion + dedupe,1.0
+L24,hybrid_rerank + expansion + dedupe,1.0
+L25,bm25,1.0
+L25,dense,1.0
+L25,hybrid,1.0
+L25,hybrid_rerank,1.0
+L25,bm25 + expansion + dedupe,1.0
+L25,dense + expansion + dedupe,1.0
+L25,hybrid + expansion + dedupe,1.0
+L25,hybrid_rerank + expansion + dedupe,1.0
+L26,bm25,1.0
+L26,dense,
+L26,hybrid,2.0
+L26,hybrid_rerank,1.0
+L26,bm25 + expansion + dedupe,1.0
+L26,dense + expansion + dedupe,
+L26,hybrid + expansion + dedupe,2.0
+L26,hybrid_rerank + expansion + dedupe,1.0
+L27,bm25,1.0
+L27,dense,1.0
+L27,hybrid,1.0
+L27,hybrid_rerank,1.0
+L27,bm25 + expansion + dedupe,1.0
+L27,dense + expansion + dedupe,1.0
+L27,hybrid + expansion + dedupe,1.0
+L27,hybrid_rerank + expansion + dedupe,1.0
+L28,bm25,
+L28,dense,2.0
+L28,hybrid,3.0
+L28,hybrid_rerank,1.0
+L28,bm25 + expansion + dedupe,
+L28,dense + expansion + dedupe,2.0
+L28,hybrid + expansion + dedupe,3.0
+L28,hybrid_rerank + expansion + dedupe,1.0
+L29,bm25,1.0
+L29,dense,1.0
+L29,hybrid,1.0
+L29,hybrid_rerank,1.0
+L29,bm25 + expansion + dedupe,1.0
+L29,dense + expansion + dedupe,1.0
+L29,hybrid + expansion + dedupe,1.0
+L29,hybrid_rerank + expansion + dedupe,1.0
+L30,bm25,1.0
+L30,dense,1.0
+L30,hybrid,1.0
+L30,hybrid_rerank,1.0
+L30,bm25 + expansion + dedupe,1.0
+L30,dense + expansion + dedupe,1.0
+L30,hybrid + expansion + dedupe,1.0
+L30,hybrid_rerank + expansion + dedupe,1.0
+L31,bm25,
+L31,dense,1.0
+L31,hybrid,
+L31,hybrid_rerank,
+L31,bm25 + expansion + dedupe,
+L31,dense + expansion + dedupe,1.0
+L31,hybrid + expansion + dedupe,1.0
+L31,hybrid_rerank + expansion + dedupe,2.0
+L32,bm25,2.0
+L32,dense,1.0
+L32,hybrid,1.0
+L32,hybrid_rerank,1.0
+L32,bm25 + expansion + dedupe,2.0
+L32,dense + expansion + dedupe,1.0
+L32,hybrid + expansion + dedupe,1.0
+L32,hybrid_rerank + expansion + dedupe,1.0

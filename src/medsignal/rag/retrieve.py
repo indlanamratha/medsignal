@@ -31,6 +31,41 @@ def tokenize(text: str) -> list[str]:
     return re.findall(r"[a-z0-9]+", text.lower())
 
 
+# Everyday phrasings mapped to the label section that answers them. Appending the section name
+# to the search query closes the vocabulary gap ("who should not take" vs "Contraindications").
+SECTION_HINTS = {
+    r"contraindicat|who should not|should not take|shouldn't take|can't take|cannot take|not take|avoid":
+        "contraindications",
+    r"side effect|adverse|common reaction": "adverse reactions",
+    r"\bdose\b|dosing|dosed|how often|how much|how to take": "dosage and administration",
+    r"pregnan|breastfeed|nursing|children|pediatric|elderly|kidney impairment": "use in specific populations",
+    r"interact|taken with|combined with|other medications": "drug interactions",
+    r"\bindicated|approved for|used for|used to treat": "indications and usage",
+}
+DUPLICATE_OVERLAP = 0.8
+
+
+def expand_query(question: str) -> str:
+    hints = [section for pattern, section in SECTION_HINTS.items() if re.search(pattern, question.lower())]
+    return " ".join([question, *hints])
+
+
+def drop_near_duplicates(chunks: list[dict], threshold: float = DUPLICATE_OVERLAP) -> list[dict]:
+    """Keep the first of any group of chunks whose words overlap by more than `threshold`.
+
+    Several labels (e.g. generic phentermine from different makers) repeat the same text,
+    which would otherwise fill every top-5 slot with copies of one passage.
+    """
+    kept, kept_words = [], []
+    for chunk in chunks:
+        words = set(tokenize(chunk["text"]))
+        if any(len(words & other) / max(1, min(len(words), len(other))) > threshold for other in kept_words):
+            continue
+        kept.append(chunk)
+        kept_words.append(words)
+    return kept
+
+
 def reciprocal_rank_fusion(rankings: list[list[str]], k: int = 60) -> list[str]:
     """Merge ranked lists: each item scores 1 / (k + rank) in every list it appears in."""
     scores: dict[str, float] = {}
@@ -132,24 +167,27 @@ class LabelRetriever:
         return scores.nlargest(CANDIDATES).index.tolist()
 
     def retrieve(self, question: str, drug: str | None = None, k: int = 5,
-                 mode: str = "hybrid_rerank") -> list[dict]:
+                 mode: str = "hybrid_rerank", expand: bool = True, dedupe: bool = True) -> list[dict]:
         """Return the top-k chunks for a question, each with its citation metadata."""
         if mode not in MODES:
             raise ValueError(f"mode must be one of {MODES}")
         drug = drug or detect_drug(question, self.aliases)
+        query = expand_query(question) if expand else question
         if mode == "dense":
-            ranked = self._dense(question, drug)
+            ranked = self._dense(query, drug)
         elif mode == "bm25":
-            ranked = self._bm25(question, drug)
+            ranked = self._bm25(query, drug)
         else:
-            ranked = reciprocal_rank_fusion([self._dense(question, drug), self._bm25(question, drug)])
+            ranked = reciprocal_rank_fusion([self._dense(query, drug), self._bm25(query, drug)])
 
         candidates = self.chunks.loc[ranked].to_dict("records")
         if mode == "hybrid_rerank" and candidates:
-            scores = self.reranker.predict([(question, c["context_text"]) for c in candidates])
+            scores = self.reranker.predict([(query, c["context_text"]) for c in candidates])
             for c, s in zip(candidates, scores):
                 c["rerank_score"] = float(s)
             candidates.sort(key=lambda c: c["rerank_score"], reverse=True)
+        if dedupe:
+            candidates = drop_near_duplicates(candidates)
         return candidates[:k]
 
 

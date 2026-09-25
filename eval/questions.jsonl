@@ -1,0 +1,50 @@
+{"id": "L01", "type": "label", "question": "What is the boxed warning for Wegovy?", "drug": "semaglutide", "sections": ["Boxed Warning"], "facts": ["c-cell|thyroid"]}
+{"id": "L02", "type": "label", "question": "Is Ozempic contraindicated in patients with a personal or family history of medullary thyroid carcinoma?", "drug": "semaglutide", "sections": ["Contraindications", "Boxed Warning"], "facts": ["contraindicated|should not|must not"]}
+{"id": "L03", "type": "label", "question": "What are the most common adverse reactions with Mounjaro?", "drug": "tirzepatide", "sections": ["Adverse Reactions"], "facts": ["nausea", "diarrhea|diarrhoea"]}
+{"id": "L04", "type": "label", "question": "What should be done if pancreatitis is suspected in a patient taking Zepbound?", "drug": "tirzepatide", "sections": ["Warnings and Precautions"], "facts": ["discontinu|stop"]}
+{"id": "L05", "type": "label", "question": "Does metformin have a boxed warning, and what is it about?", "drug": "metformin", "sections": ["Boxed Warning"], "facts": ["lactic acidosis"]}
+{"id": "L06", "type": "label", "question": "Below what eGFR is metformin contraindicated?", "drug": "metformin", "sections": ["Contraindications", "Dosage and Administration", "Warnings and Precautions"], "facts": ["30"]}
+{"id": "L07", "type": "label", "question": "What is the boxed warning for Contrave?", "drug": "naltrexone/bupropion", "sections": ["Boxed Warning"], "facts": ["suicid"]}
+{"id": "L08", "type": "label", "question": "What serious infection of the genital area is listed in the Jardiance warnings?", "drug": "empagliflozin", "sections": ["Warnings and Precautions"], "facts": ["fournier|necrotizing fasciitis"]}
+{"id": "L09", "type": "label", "question": "Can Farxiga cause genital fungal infections?", "drug": "dapagliflozin", "sections": ["Warnings and Precautions", "Adverse Reactions"], "facts": ["mycotic|yeast|fungal"]}
+{"id": "L10", "type": "label", "question": "What does the Januvia label say to do if pancreatitis is suspected?", "drug": "sitagliptin", "sections": ["Warnings and Precautions"], "facts": ["discontinu|stop"]}
+{"id": "L11", "type": "label", "question": "What is the most common adverse reaction of insulin glargine?", "drug": "insulin glargine", "sections": ["Adverse Reactions", "Warnings and Precautions"], "facts": ["hypoglyc"]}
+{"id": "L12", "type": "label", "question": "Can Lantus be diluted or mixed with other insulins?", "drug": "insulin glargine", "sections": ["Dosage and Administration", "Warnings and Precautions"], "facts": ["do not|should not|not be|must not"]}
+{"id": "L13", "type": "label", "question": "Is phentermine approved for long-term use?", "drug": "phentermine", "sections": ["Indications and Usage", "Dosage and Administration"], "facts": ["short-term|short term|few weeks"]}
+{"id": "L14", "type": "label", "question": "Who should not take phentermine?", "drug": "phentermine", "sections": ["Contraindications"], "facts": ["cardiovascular|maoi|monoamine|glaucoma|hyperthyroid|pregnan"]}
+{"id": "L15", "type": "label", "question": "What is the boxed warning for Trulicity?", "drug": "dulaglutide", "sections": ["Boxed Warning"], "facts": ["c-cell|thyroid"]}
+{"id": "L16", "type": "label", "question": "What is Saxenda indicated for?", "drug": "liraglutide", "sections": ["Indications and Usage"], "facts": ["weight"]}
+{"id": "L17", "type": "label", "question": "Can Wegovy be used during pregnancy?", "drug": "semaglutide", "sections": ["Use in Specific Populations"], "facts": ["discontinu|fetal|harm|not recommended"]}
+{"id": "L18", "type": "label", "question": "How does Ozempic affect the absorption of oral medications?", "drug": "semaglutide", "sections": ["Drug Interactions"], "facts": ["gastric emptying"]}
+{"id": "L19", "type": "label", "question": "What does the Mounjaro label say about oral hormonal contraceptives?", "drug": "tirzepatide", "sections": ["Drug Interactions", "Use in Specific Populations", "Dosage and Administration"], "facts": ["non-oral|barrier|switch"]}
+{"id": "L20", "type": "label", "question": "What does the Wegovy label say about heart rate?", "drug": "semaglutide", "sections": ["Warnings and Precautions", "Adverse Reactions"], "facts": ["increase"]}
+{"id": "L21", "type": "label", "question": "Does Wegovy carry a warning about suicidal behavior?", "drug": "semaglutide", "sections": ["Warnings and Precautions"], "facts": ["monitor|suicid"]}
+{"id": "L22", "type": "label", "question": "Besides weight management, what else is Zepbound indicated for?", "drug": "tirzepatide", "sections": ["Indications and Usage"], "facts": ["sleep apnea|osa"]}
+{"id": "L23", "type": "label", "question": "How often is Trulicity dosed?", "drug": "dulaglutide", "sections": ["Dosage and Administration", "Indications and Usage"], "facts": ["once weekly|once a week|weekly"]}
+{"id": "L24", "type": "label", "question": "What heart-related indication does Jardiance have?", "drug": "empagliflozin", "sections": ["Indications and Usage"], "facts": ["heart failure|cardiovascular death"]}
+{"id": "L25", "type": "label", "question": "What does the metformin label say about iodinated contrast imaging procedures?", "drug": "metformin", "sections": ["Warnings and Precautions", "Dosage and Administration", "Contraindications"], "facts": ["stop|discontinu|hold|withhold"]}
+{"id": "L26", "type": "label", "question": "What is the boxed warning for Victoza?", "drug": "liraglutide", "sections": ["Boxed Warning"], "facts": ["c-cell|thyroid"]}
+{"id": "L27", "type": "label", "question": "Why can Ozempic lead to acute kidney injury?", "drug": "semaglutide", "sections": ["Warnings and Precautions", "Adverse Reactions"], "facts": ["dehydration|volume depletion|vomiting|diarrhea|diarrhoea"]}
+{"id": "L28", "type": "label", "question": "What does the Mounjaro label advise about hypoglycemia when used with insulin?", "drug": "tirzepatide", "sections": ["Warnings and Precautions"], "facts": ["lower|reduc"]}
+{"id": "L29", "type": "label", "question": "Can Contrave cause seizures?", "drug": "naltrexone/bupropion", "sections": ["Warnings and Precautions", "Contraindications"], "facts": ["seizure"]}
+{"id": "L30", "type": "label", "question": "Can Contrave be taken by patients using opioids?", "drug": "naltrexone/bupropion", "sections": ["Contraindications", "Warnings and Precautions", "Drug Interactions"], "facts": ["contraindicated|do not|should not|not be"]}
+{"id": "L31", "type": "label", "question": "Who should not take Xenical?", "drug": "orlistat", "sections": ["Contraindications"], "facts": ["cholestasis|malabsorption"]}
+{"id": "L32", "type": "label", "question": "What does the Byetta label say about pancreatitis?", "drug": "exenatide", "sections": ["Warnings and Precautions"], "facts": ["discontinu|stop"]}
+{"id": "U01", "type": "unanswerable", "question": "How much does Ozempic cost in Canada?"}
+{"id": "U02", "type": "unanswerable", "question": "What was Novo Nordisk's stock price in 2025?"}
+{"id": "U03", "type": "unanswerable", "question": "How much revenue did Mounjaro make in 2025?"}
+{"id": "U04", "type": "unanswerable", "question": "What is the boxed warning for aspirin?"}
+{"id": "U05", "type": "unanswerable", "question": "What is the usual dose of ibuprofen for a headache?"}
+{"id": "U06", "type": "unanswerable", "question": "Who discovered semaglutide?"}
+{"id": "U07", "type": "unanswerable", "question": "How many people in the United States take Ozempic?"}
+{"id": "U08", "type": "unanswerable", "question": "Is Wegovy covered by Medicare?"}
+{"id": "U09", "type": "unanswerable", "question": "Which celebrities use Mounjaro?"}
+{"id": "U10", "type": "unanswerable", "question": "What are the side effects of lisinopril?"}
+{"id": "D01", "type": "data", "question": "How many unique FAERS reports list tirzepatide as a suspect drug?", "truth_sql": "select count(distinct report_id) from fct_report_drug where drug_group = 'tirzepatide'"}
+{"id": "D02", "type": "data", "question": "How many semaglutide reports mention nausea?", "truth_sql": "select count(distinct report_id) from fct_drug_reaction where drug_group = 'semaglutide' and reaction_pt = 'NAUSEA'"}
+{"id": "D03", "type": "data", "question": "How many serious metformin reports were received in 2024?", "truth_sql": "select count(distinct report_id) from fct_report_drug where drug_group = 'metformin' and is_serious and year(received_date) = 2024"}
+{"id": "D04", "type": "data", "question": "What percentage of dulaglutide reports were serious? Round to one decimal place.", "truth_sql": "select round(100.0 * avg(is_serious::int), 1) from fct_report_drug where drug_group = 'dulaglutide'"}
+{"id": "D05", "type": "data", "question": "How many orlistat reports were received in 2025?", "truth_sql": "select count(distinct report_id) from fct_report_drug where drug_group = 'orlistat' and year(received_date) = 2025"}
+{"id": "D06", "type": "data", "question": "Which study drug had the most reports received in 2025?", "truth_sql": "select drug_group from fct_report_drug where year(received_date) = 2025 group by drug_group order by count(*) desc limit 1"}
+{"id": "D07", "type": "data", "question": "What is the PRR for semaglutide and ileus? Round to two decimals.", "truth_sql": "select round(prr, 2) from mart_signals where drug_group = 'semaglutide' and reaction_pt = 'ILEUS'"}
+{"id": "D08", "type": "data", "question": "How many phentermine reports were filed by consumers?", "truth_sql": "select count(distinct report_id) from fct_report_drug where drug_group = 'phentermine' and reporter_type_label = 'Consumer'"}

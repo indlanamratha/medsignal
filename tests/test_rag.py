@@ -60,3 +60,21 @@ def test_select_labels_detects_combinations_by_substance_count():
                "openfda": {"brand_name": ["SYNJARDY XR"], "generic_name": ["EMPAGLIFLOZIN"],
                            "substance_name": ["EMPAGLIFLOZIN", "METFORMIN HYDROCHLORIDE"]}}]
     assert select_labels(labels, allow_combinations=False) == []
+
+
+def test_expand_query_adds_the_matching_label_section():
+    from medsignal.rag.retrieve import expand_query
+    assert expand_query("Who should not take Xenical?").endswith("contraindications")
+    assert "dosage and administration" in expand_query("How often is Trulicity dosed?")
+    assert expand_query("What is the boxed warning for Wegovy?") == "What is the boxed warning for Wegovy?"
+
+
+def test_near_duplicate_passages_from_different_labels_are_dropped():
+    from medsignal.rag.retrieve import drop_near_duplicates
+    text = "Nursing mothers discontinue drug or nursing taking into consideration importance of drug"
+    chunks = [{"brand_name": "Phentermine", "text": text},
+              {"brand_name": "Lomaira", "text": text.replace("mothers", "mother")},
+              {"brand_name": "Phentermine", "text": "Contraindications history of cardiovascular disease"}]
+    kept = drop_near_duplicates(chunks)
+    assert [c["brand_name"] for c in kept] == ["Phentermine", "Phentermine"]
+    assert kept[1]["text"].startswith("Contraindications")

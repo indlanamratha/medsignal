@@ -56,6 +56,7 @@ class GroundedAnswer(BaseModel):
     answer: str
     found_in_sources: bool
     citations: list[Citation]
+    passages: list[str] = Field(default_factory=list)   # what the model was shown (used by the evaluation)
     disclaimer: str = DISCLAIMER
 
 
@@ -115,7 +116,8 @@ class LabelQA:
         found = result.found_in_sources and bool(citations)
         return GroundedAnswer(question=question, drug=drug,
                               answer=result.answer if found else NOT_FOUND,
-                              found_in_sources=found, citations=citations)
+                              found_in_sources=found, citations=citations,
+                              passages=[c["text"] for c in chunks])
 
 
 def main() -> None:
