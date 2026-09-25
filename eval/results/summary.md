@@ -12,3 +12,16 @@
 | dense + expansion + dedupe         |           0.906 |      0.839 |
 | hybrid + expansion + dedupe        |           1     |      0.865 |
 | hybrid_rerank + expansion + dedupe |           1     |      0.944 |
+
+## Grounded answering (hybrid + rerank)
+
+|                                           | value      |
+|:------------------------------------------|:-----------|
+| Label questions answered                  | 100% of 32 |
+| Fact recall (answered questions)          | 1.00       |
+| Faithfulness (LLM judge)                  | 1.00       |
+| Unanswerable questions correctly declined | 100% of 10 |
+
+## Agent data questions
+
+Correct: 8 of 8 (100%)
